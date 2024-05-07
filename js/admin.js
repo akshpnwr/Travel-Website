@@ -19,6 +19,10 @@ const db = firebase.firestore(app);
 const storage = firebase.storage(app);
 
 const formElement = document.querySelector('.contact-form');
+const loader = document.querySelector('.loader');
+const overlay = document.querySelector('#overlayer');
+const loaderText = loader.querySelector('.loader-text');
+const spinner = loader.querySelector('.spinner-border');
 
 const uploadImage = async (imageFile) => {
     return new Promise((resolve, reject) => {
@@ -48,6 +52,10 @@ formElement.addEventListener('submit', async (e) => {
     const bannerImageFile = formData.get('banner_image');
     const blogImageFiles = formData.getAll('blog_images');
 
+    loader.style.display = 'block';
+    loaderText.textContent = 'Uploading images...'; // Append the text
+    overlay.style.display = 'block';
+
     const bannerImgUrl = await uploadImage(bannerImageFile);
 
     const blogImageUrls = [];
@@ -62,7 +70,17 @@ formElement.addEventListener('submit', async (e) => {
         bannerImgUrl,
         blogImageUrls
     });
+
     console.log("Document written with ID: ", docRef.id);
+    loaderText.textContent = 'Successfull✅'; // Append the text
+    spinner.style.display = 'none';
+
+    await new Promise(r => setTimeout(r, 500));
+
+    loaderText.textContent = '';
+    loader.style.display = 'none';
+    spinner.style.display = 'block'
+    overlay.style.display = 'none';
 
     formElement.reset();
 });
