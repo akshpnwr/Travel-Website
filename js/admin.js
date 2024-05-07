@@ -20,32 +20,49 @@ const storage = firebase.storage(app);
 
 const formElement = document.querySelector('.contact-form');
 
+const uploadImage = async (imageFile) => {
+    return new Promise((resolve, reject) => {
+        const storageRef = storage.ref();
+        const uploadTask = storageRef.child('images/' + imageFile.name).put(imageFile);
+
+        uploadTask.on('state_changed', function (snapshot) {
+            var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            console.log('Upload is ' + progress + '% done');
+        }, function (error) {
+            console.log('Upload failed:', error);
+            reject(error);
+        }, function () {
+            uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
+                console.log('File available at', downloadURL);
+                resolve(downloadURL);
+            });
+        });
+    });
+}
+
 formElement.addEventListener('submit', async (e) => {
     e.preventDefault();
     const formData = new FormData(formElement);
     const title = formData.get('title');
     const content = formData.get('content');
-    const imageFile = formData.get('blog_image');
-    const storageRef = storage.ref();
-    const uploadTask = storageRef.child('images/' + imageFile.name).put(imageFile);
+    const bannerImageFile = formData.get('banner_image');
+    const blogImageFiles = formData.getAll('blog_images');
 
-    uploadTask.on('state_changed', function (snapshot) {
-        var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        console.log('Upload is ' + progress + '% done');
-    }, function (error) {
-        console.log('Upload failed:', error);
-    }, function () {
-        uploadTask.snapshot.ref.getDownloadURL().then(async function (downloadURL) {
-            console.log('File available at', downloadURL);
+    const bannerImgUrl = await uploadImage(bannerImageFile);
 
-            const docRef = await db.collection("blog_posts").add({
-                title: title,
-                content: content,
-                imageUrl: downloadURL
-            });
+    const blogImageUrls = [];
+    for (const imageFile of blogImageFiles) {
+        const imageUrl = await uploadImage(imageFile);
+        blogImageUrls.push(imageUrl);
+    }
 
-            console.log("Document written with ID: ", docRef.id);
-        });
+    const docRef = await db.collection("blog_posts").add({
+        title,
+        content,
+        bannerImgUrl,
+        blogImageUrls
     });
+    console.log("Document written with ID: ", docRef.id);
+
     formElement.reset();
 });
