@@ -96,13 +96,7 @@
         <div class="row align-items-center">
           <div class="col-lg-6 mx-auto text-center">
             <div class="intro-wrap">
-              <h1 class="mb-3">Admin Panel</h1>
-              <button
-                class="btn text-blue logout-btn"
-                style="background-color: white"
-              >
-                Log out
-              </button>
+              <h1 class="mb-0">Log In</h1>
             </div>
           </div>
         </div>
@@ -111,63 +105,41 @@
 
     <div class="untree_co-section">
       <div class="container">
-        <div class="row">
-          <div class="col-12 mb-5 mb-lg-0">
-            <form class="contact-form" data-aos="fade-up" data-aos-delay="200">
+        <div class="row justify-content-center">
+          <div class="col-12 col-md-6 mb-5 mb-lg-0">
+            <form class="login-form" data-aos="fade-up" data-aos-delay="200">
               <div class="row">
-                <div class="col-6">
+                <div class="col-12">
                   <div class="form-group">
-                    <label class="text-black" for="title"
-                      >Title of the Blog</label
-                    >
+                    <label class="text-black" for="email">Email</label>
                     <input
-                      type="text"
-                      name="title"
+                      type="email"
+                      name="email"
                       class="form-control"
-                      id="title"
+                      id="email"
+                      value="akashpanwar9976@gmail.com"
                       required
                     />
                   </div>
                 </div>
               </div>
-              <div class="form-group">
-                <label class="text-black" for="banner_image"
-                  >Upload Banner Image</label
-                >
-                <input
-                  type="file"
-                  class="form-control"
-                  name="banner_image"
-                  id="banner_image"
-                  required
-                />
-              </div>
-              <div class="form-group">
-                <label class="text-black" for="blog_images"
-                  >Upload Extra Images</label
-                >
-                <input
-                  type="file"
-                  class="form-control"
-                  name="blog_images"
-                  id="blog_images"
-                  multiple
-                  required
-                />
+              <div class="row">
+                <div class="col-12">
+                  <div class="form-group">
+                    <label class="text-black" for="password">Password</label>
+                    <input
+                      type="password"
+                      name="password"
+                      class="form-control"
+                      id="password"
+                      value="12345678"
+                      required
+                    />
+                  </div>
+                </div>
               </div>
 
-              <div class="form-group">
-                <label class="text-black" for="content">Content</label>
-                <textarea
-                  name="content"
-                  class="form-control"
-                  id="content"
-                  cols="30"
-                  rows="5"
-                  required
-                ></textarea>
-              </div>
-              <button type="submit" class="btn btn-primary">Upload Blog</button>
+              <button type="submit" class="btn btn-primary">Log In</button>
             </form>
           </div>
         </div>
@@ -296,10 +268,8 @@
     <script src="js/custom.js"></script>
 
     <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-storage.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
 
-    <script src="./js/admin.js" type="module"></script>
+    <script type="module" src="js/auth.js"></script>
   </body>
 </html>

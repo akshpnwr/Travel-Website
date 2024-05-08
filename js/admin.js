@@ -23,6 +23,7 @@ const loader = document.querySelector('.loader');
 const overlay = document.querySelector('#overlayer');
 const loaderText = loader.querySelector('.loader-text');
 const spinner = loader.querySelector('.spinner-border');
+const logoutBtn = document.querySelector('.logout-btn');
 
 const uploadImage = async (imageFile) => {
     return new Promise((resolve, reject) => {
@@ -43,6 +44,11 @@ const uploadImage = async (imageFile) => {
         });
     });
 }
+
+logoutBtn.addEventListener('click', async () => {
+    await firebase.auth().signOut();
+    window.location.href = '/';
+});
 
 formElement.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -84,3 +90,30 @@ formElement.addEventListener('submit', async (e) => {
 
     formElement.reset();
 });
+
+
+// firebase.auth().onAuthStateChanged(function (user) {
+//     if (user) {
+//         // User is signed in.
+//         var docRef = db.collection("users").doc(user.uid);
+
+//         docRef.get().then(function (doc) {
+//             if (doc.exists) {
+//                 if (doc.data().role === 'admin') {
+//                     // User is an admin, allow access
+//                 } else {
+//                     // User is not an admin, redirect to home page
+//                     window.location.href = "/";
+//                 }
+//             } else {
+//                 // doc.data() will be undefined in this case
+//                 console.log("No such document!");
+//             }
+//         }).catch(function (error) {
+//             console.log("Error getting document:", error);
+//         });
+//     } else {
+//         // No user is signed in, redirect to login page
+//         window.location.href = "/login";
+//     }
+// });
