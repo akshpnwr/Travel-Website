@@ -15,6 +15,12 @@ const auth = firebase.auth(app);
 // sign in
 const logInForm = document.querySelector('.login-form');
 
+auth.onAuthStateChanged(user => {
+    if (user) {
+        window.location.href = '/admin.html';
+    }
+});
+
 logInForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const formData = new FormData(logInForm);
@@ -24,8 +30,7 @@ logInForm.addEventListener('submit', async (e) => {
     try {
         console.log(email, password);
         await auth.signInWithEmailAndPassword(email, password);
-        // alert('Sign in successfully');
-        window.location.href = 'admin.html';
+        alert('Sign in successfully');
     } catch (error) {
         alert(error.message);
     }

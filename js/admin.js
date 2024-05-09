@@ -17,6 +17,7 @@ const firebaseConfig = {
 const app = firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore(app);
 const storage = firebase.storage(app);
+const auth = firebase.auth();
 
 const formElement = document.querySelector('.contact-form');
 const loader = document.querySelector('.loader');
@@ -58,6 +59,18 @@ formElement.addEventListener('submit', async (e) => {
     const bannerImageFile = formData.get('banner_image');
     const blogImageFiles = formData.getAll('blog_images');
 
+    if (!bannerImageFile.type.startsWith('image/')) {
+        alert('Banner image file must be an image.');
+        return;
+    }
+
+    for (const imageFile of blogImageFiles) {
+        if (!imageFile.type.startsWith('image/')) {
+            alert('All blog image files must be images.');
+            return;
+        }
+    }
+
     loader.style.display = 'block';
     loaderText.textContent = 'Uploading images...'; // Append the text
     overlay.style.display = 'block';
@@ -92,28 +105,6 @@ formElement.addEventListener('submit', async (e) => {
 });
 
 
-// firebase.auth().onAuthStateChanged(function (user) {
-//     if (user) {
-//         // User is signed in.
-//         var docRef = db.collection("users").doc(user.uid);
-
-//         docRef.get().then(function (doc) {
-//             if (doc.exists) {
-//                 if (doc.data().role === 'admin') {
-//                     // User is an admin, allow access
-//                 } else {
-//                     // User is not an admin, redirect to home page
-//                     window.location.href = "/";
-//                 }
-//             } else {
-//                 // doc.data() will be undefined in this case
-//                 console.log("No such document!");
-//             }
-//         }).catch(function (error) {
-//             console.log("Error getting document:", error);
-//         });
-//     } else {
-//         // No user is signed in, redirect to login page
-//         window.location.href = "/login";
-//     }
-// });
+auth.onAuthStateChanged(function (user) {
+    if (!user) window.location.href = "/login.html";
+});
