@@ -32,7 +32,10 @@ sliders.forEach(slider => {
 
 readMoreBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-        const blogContent = btn.closest('.travel-experts-container').querySelector('.blog-content');
-        blogContent.classList.toggle('show');
+        const blogContentMobile = btn.closest('.travel-experts-container').querySelector('.blog-content-mobile');
+        const blogContentDesktop = btn.closest('.travel-experts-container').querySelector('.blog-content-desktop');
+
+        blogContentMobile.classList.toggle('show');
+        blogContentDesktop.classList.toggle('show');
     })
 })
