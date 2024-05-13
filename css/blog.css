@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Explora&family=Fenix&display=swap');
 
 .travel-blog {
-    margin-top: 20px;
+    /* margin-top: 20px; */
 }
 
 @media screen and (min-width: 700px) {
@@ -16,9 +16,13 @@
 
 .travel-blog-header {
     max-width: 100%;
-    padding: 0 20px;
+    padding: 20px;
     background-color: #e2edf2;
+}
 
+.travel-blog-header .travel-blog-image {
+    width: 100%;
+    border-radius: 190px;
 }
 
 @media (min-width: 700px) {
@@ -26,6 +30,12 @@
         width: 100%;
         padding: 0 60px;
     }
+
+    .travel-blog-header .travel-blog-image {
+        width: 100%;
+        border-radius: 0px;
+    }
+
 }
 
 .travel-blog-content {
@@ -59,20 +69,6 @@
         margin-left: 0;
     }
 
-}
-
-.travel-blog-image {
-    max-width: 100%;
-}
-
-@media (min-width: 700px) {
-    .travel-blog-image {
-        aspect-ratio: 0.77;
-        object-fit: cover;
-        object-position: center;
-        width: 100%;
-        height: 500px;
-    }
 }
 
 .travel-blog-text-container {
@@ -117,11 +113,49 @@
     margin-bottom: 60px;
 }
 
+.blog-items {
+    /* Your styles here */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+
+.blog-content {
+    font: 20px Fenix, sans-serif;
+    background-color: #e2edf2;
+    width: 100%;
+    margin-top: 80px;
+    padding: 30px;
+    position: absolute;
+    visibility: hidden;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+@media screen and (min-width: 700px) {
+    .blog-content {
+        width: 116.2%;
+    }
+}
+
+.blog-content.show {
+    visibility: visible;
+    transform: translateY(0);
+    opacity: 1;
+    position: relative;
+    margin: 0 auto;
+}
+
 @media screen and (min-width: 700px) {
     .travel-experts-container {
-        margin-top: 200px;
-        margin-bottom: 200px;
         right: 60px;
+    }
+
+    .blog-items {
+        margin-top: 250px;
     }
 }
 
@@ -167,6 +201,7 @@
     justify-content: space-around;
     align-items: center;
     margin: 30px 0;
+    cursor: pointer;
 }
 
 .read-more-text {
@@ -209,4 +244,50 @@
     .bg-div-left {
         left: 50px;
     }
+}
+
+/* slider */
+
+.slider-img {
+    max-width: 100%;
+}
+
+.slider-right {
+    margin-left: 80px;
+}
+
+.slider {
+    display: block;
+    height: 300px;
+    width: 300px;
+    position: relative;
+    margin: 0 auto;
+    margin-top: 40px;
+    margin-left: 60px;
+}
+
+.slider-img {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    opacity: 0.1;
+    transition: all 1s ease-out;
+    transition-duration: 2s;
+}
+
+@media (min-width: 700px) {
+    .slider {
+        height: 500px;
+        width: 450px;
+    }
+
+    .slider-img {}
+}
+
+.slider-active {
+    opacity: 1;
+    transition: all 1s ease-out;
+    transition-duration: 3s;
+    transform: translate(-35px, -35px);
+    z-index: 100;
 }
