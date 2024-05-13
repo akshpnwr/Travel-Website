@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Explora&family=Fenix&display=swap');
+
+.hero.hero-inner {
+    background: url(../images/tour-mussoorie.png) no-repeat center center;
+    height: 70vh;
+    background-size: cover;
+}
+
+.hero-content {
+    padding: 0 3rem;
+}
+
+.hero-tour-available {
+    text-align: right;
+}
+
+.text-decoration-underline {
+    border-bottom: 5px solid white;
+}
+
+.text-shadow {
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.59);
+}
+
+.tour-content {
+    width: 80%;
+    margin: 0 auto;
+    font-size: 20px;
+    text-align: justify;
+}
+
+.tour-content span {
+    font-size: 30px;
+    font-weight: 600;
+    color: #73b6e9;
+}
+
+@media screen and (max-width: 768px) {
+    .hero.hero-inner {
+        height: 80vh;
+        padding: 5rem 0;
+    }
+
+    .hero-content {
+        padding: 0 .1rem;
+    }
+
+    .hero-tour-available {
+        text-align: center;
+    }
+
+    .tour-content {
+        width: 95%;
+    }
+
+}
