@@ -4,6 +4,8 @@
     background: url(../images/tour-mussoorie.png) no-repeat center center;
     height: 70vh;
     background-size: cover;
+    display: flex;
+    align-items: center;
 }
 
 .hero-content {
@@ -33,6 +35,7 @@
     font-size: 30px;
     font-weight: 600;
     color: #73b6e9;
+    border-bottom: 3px solid #73b6e9;
 }
 
 @media screen and (max-width: 768px) {
@@ -47,6 +50,7 @@
 
     .hero-tour-available {
         text-align: center;
+        margin-top: 2rem;
     }
 
     .tour-content {

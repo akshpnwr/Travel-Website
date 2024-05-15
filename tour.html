@@ -118,8 +118,7 @@
           <div class="col-lg-6">
             <div class="intro-wrap my-auto">
               <h1 class="mb-3 text-shadow hero-tour-available">
-                Tours <br />
-                Available
+                <span class="typed-words"></span>
               </h1>
             </div>
           </div>
@@ -327,6 +326,32 @@
     <script src="js/daterangepicker.js"></script>
 
     <script src="js/typed.js"></script>
+    <script>
+      $(function () {
+        var slides = $(".slides"),
+          images = slides.find("img");
+
+        images.each(function (i) {
+          $(this).attr("data-id", i + 1);
+        });
+
+        var typed = new Typed(".typed-words", {
+          strings: ["Tours <br /> Available."],
+          typeSpeed: 80,
+          backSpeed: 80,
+          backDelay: 2000,
+          startDelay: 1000,
+          loop: true,
+          showCursor: true,
+          preStringTyped: (arrayPos, self) => {
+            arrayPos++;
+            console.log(arrayPos);
+            $(".slides img").removeClass("active");
+            $('.slides img[data-id="' + arrayPos + '"]').addClass("active");
+          },
+        });
+      });
+    </script>
 
     <script src="js/custom.js"></script>
   </body>

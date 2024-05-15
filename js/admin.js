@@ -56,13 +56,13 @@ formElement.addEventListener('submit', async (e) => {
     const formData = new FormData(formElement);
     const title = formData.get('title');
     const content = formData.get('content');
-    const bannerImageFile = formData.get('banner_image');
+    // const bannerImageFile = formData.get('banner_image');
     const blogImageFiles = formData.getAll('blog_images');
 
-    if (!bannerImageFile.type.startsWith('image/')) {
-        alert('Banner image file must be an image.');
-        return;
-    }
+    // if (!bannerImageFile.type.startsWith('image/')) {
+    //     alert('Banner image file must be an image.');
+    //     return;
+    // }
 
     for (const imageFile of blogImageFiles) {
         if (!imageFile.type.startsWith('image/')) {
@@ -75,7 +75,7 @@ formElement.addEventListener('submit', async (e) => {
     loaderText.textContent = 'Uploading images...'; // Append the text
     overlay.style.display = 'block';
 
-    const bannerImgUrl = await uploadImage(bannerImageFile);
+    // const bannerImgUrl = await uploadImage(bannerImageFile);
 
     const blogImageUrls = [];
     for (const imageFile of blogImageFiles) {
@@ -86,7 +86,7 @@ formElement.addEventListener('submit', async (e) => {
     const docRef = await db.collection("blog_posts").add({
         title,
         content,
-        bannerImgUrl,
+        // bannerImgUrl,
         blogImageUrls
     });
 

@@ -142,6 +142,7 @@
 
     .second-blog-content {
         order: 2;
+        padding-left: 60px;
     }
 
     .blog-content-mobile {
