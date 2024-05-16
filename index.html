@@ -830,7 +830,6 @@
           showCursor: true,
           preStringTyped: (arrayPos, self) => {
             arrayPos++;
-            console.log(arrayPos);
             $(".slides img").removeClass("active");
             $('.slides img[data-id="' + arrayPos + '"]').addClass("active");
           },
@@ -839,5 +838,13 @@
     </script>
 
     <script src="js/custom.js"></script>
+
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDPEBHU_sCUeKz6ZIuMRRNjgi_x_7YFZ48&libraries=places"></script> -->
+
+    <!-- <script
+      async
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDPEBHU_sCUeKz6ZIuMRRNjgi_x_7YFZ48&loading=async&libraries=places"
+    ></script> -->
+    <script src="js/index.js"></script>
   </body>
 </html>
