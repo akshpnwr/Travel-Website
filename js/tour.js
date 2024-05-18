@@ -1,47 +1,29 @@
-const tours = [
-    {
-        "id": 1,
-        "title": "Trekking",
-        "imgurl": "images/hero-slider-1.jpg",
-        "description": "Trekking Experience the thrill of trekking through beautiful landscapes."
-    },
-    {
-        "id": 2,
-        "title": "Bungee jumping",
-        "imgurl": "images/hero-slider-2.jpg",
-        "description": "Bungee Feel the adrenaline rush with our safe and exciting bungee jumping activity."
-    },
-    {
-        "id": 3,
-        "title": "Boating",
-        "imgurl": "images/hero-slider-3.jpg",
-        "description": "Boating Enjoy a peaceful boating experience on the serene waters."
-    },
-    {
-        "id": 4,
-        "title": "Sky diving",
-        "imgurl": "images/hero-slider-3.jpg",
-        "description": "Sky Diving Enjoy a peaceful boating experience on the serene waters."
-    }
-]
+const urlParams = new URLSearchParams(window.location.search);
+const id = urlParams.get('id');
 
-function getTours() {
-    return tours;
-}
+// Retrieve the location object from localStorage
+const data = JSON.parse(localStorage.getItem(`location-${id}`));
+console.log(data);
 
 const tourSlider = document.querySelector('.tour-slider')
 const tourContent = document.querySelector('.tour-content')
+const tourHeading = document.querySelector('.tour-heading')
+const tourHeadingContent = document.querySelector('.tour-heading-content')
+const tourBanner = document.querySelector('.hero-inner')
 
-const sliderItemHtml = getTours().map(tour => {
-    console.log(tour);
+tourHeading.textContent = data.title
+tourHeadingContent.textContent = data.content
+tourBanner.style.backgroundImage = `url(${data.tourBannerImgUrl})`;
+
+const sliderItemHtml = data.tours.map((tour, index) => {
     return (
-        `<div class="item tour-item" data-id=${tour.id}>
+        `<div class="item tour-item" data-id=${index}>
             <a class="media-thumb" data-fancybox="gallery">
                 <div class="media-text">
-                    <h3>${tour.title}</h3>
+                    <h3>${tour.tourTitle}</h3>
                 </div>
                 <img
-                    src=${tour.imgurl}
+                    src=${tour.tourImgUrl}
                     alt="Image"
                     class="img-fluid"
                 />
@@ -55,9 +37,8 @@ tourSlider.addEventListener('click', (e) => {
 
     if (!tourItem) return
     const id = tourItem.dataset.id
-    const tour = getTours().find(tour => tour.id === parseInt(id))
-    tourContent.innerHTML = tour.description
+    const tour = data.tours[id]
+    tourContent.innerHTML = tour.tourContent
 })
-
 
 tourSlider.innerHTML = sliderItemHtml

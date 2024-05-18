@@ -34,7 +34,7 @@
     <link rel="stylesheet" href="css/daterangepicker.css" />
     <link rel="stylesheet" href="css/aos.css" />
     <link rel="stylesheet" href="css/style.css" />
-
+    <link rel="stylesheet" href="css/index.css" />
     <title>Traveler</title>
   </head>
 
@@ -320,115 +320,7 @@
           </div>
         </div>
 
-        <div class="owl-carousel owl-3-slider">
-          <div class="item">
-            <a
-              class="media-thumb"
-              href="images/hero-slider-1.jpg"
-              data-fancybox="gallery"
-            >
-              <div class="media-text">
-                <h3>Pragser Wildsee</h3>
-                <span class="location">Italy</span>
-              </div>
-              <img
-                src="images/hero-slider-1.jpg"
-                alt="Image"
-                class="img-fluid"
-              />
-            </a>
-          </div>
-
-          <div class="item">
-            <a
-              class="media-thumb"
-              href="images/hero-slider-2.jpg"
-              data-fancybox="gallery"
-            >
-              <div class="media-text">
-                <h3>Oia</h3>
-                <span class="location">Greece</span>
-              </div>
-              <img
-                src="images/hero-slider-2.jpg"
-                alt="Image"
-                class="img-fluid"
-              />
-            </a>
-          </div>
-
-          <div class="item">
-            <a
-              class="media-thumb"
-              href="images/hero-slider-3.jpg"
-              data-fancybox="gallery"
-            >
-              <div class="media-text">
-                <h3>Perhentian Islands</h3>
-                <span class="location">Malaysia</span>
-              </div>
-              <img
-                src="images/hero-slider-3.jpg"
-                alt="Image"
-                class="img-fluid"
-              />
-            </a>
-          </div>
-
-          <div class="item">
-            <a
-              class="media-thumb"
-              href="images/hero-slider-4.jpg"
-              data-fancybox="gallery"
-            >
-              <div class="media-text">
-                <h3>Rialto Bridge</h3>
-                <span class="location">Italy</span>
-              </div>
-              <img
-                src="images/hero-slider-4.jpg"
-                alt="Image"
-                class="img-fluid"
-              />
-            </a>
-          </div>
-
-          <div class="item">
-            <a
-              class="media-thumb"
-              href="images/hero-slider-5.jpg"
-              data-fancybox="gallery"
-            >
-              <div class="media-text">
-                <h3>San Francisco, United States</h3>
-                <span class="location">United States</span>
-              </div>
-              <img
-                src="images/hero-slider-5.jpg"
-                alt="Image"
-                class="img-fluid"
-              />
-            </a>
-          </div>
-
-          <div class="item">
-            <a
-              class="media-thumb"
-              href="images/hero-slider-1.jpg"
-              data-fancybox="gallery"
-            >
-              <div class="media-text">
-                <h3>Lake Thun</h3>
-                <span class="location">Switzerland</span>
-              </div>
-              <img
-                src="images/hero-slider-2.jpg"
-                alt="Image"
-                class="img-fluid"
-              />
-            </a>
-          </div>
-        </div>
+        <div class="owl-carousel owl-3-slider tour-slider"></div>
       </div>
     </div>
 
@@ -799,7 +691,7 @@
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/jquery.animateNumber.min.js"></script>
     <script src="js/jquery.waypoints.min.js"></script>
-    <script src="js/jquery.fancybox.min.js"></script>
+    <!-- <script src="js/jquery.fancybox.min.js"></script> -->
     <script src="js/aos.js"></script>
     <script src="js/moment.min.js"></script>
     <script src="js/daterangepicker.js"></script>
@@ -837,14 +729,16 @@
       });
     </script>
 
-    <script src="js/custom.js"></script>
-
     <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDPEBHU_sCUeKz6ZIuMRRNjgi_x_7YFZ48&libraries=places"></script> -->
 
     <!-- <script
       async
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDPEBHU_sCUeKz6ZIuMRRNjgi_x_7YFZ48&loading=async&libraries=places"
     ></script> -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>
+    <script src="js/custom.js"></script>
     <script src="js/index.js"></script>
   </body>
 </html>

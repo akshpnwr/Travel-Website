@@ -1,0 +1,8 @@
+.owl-carousel .owl-item img {
+    height: 400px;
+}
+
+.owl-carousel .owl-stage {
+    display: flex;
+    gap: 10px;
+}

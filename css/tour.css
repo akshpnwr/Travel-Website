@@ -58,3 +58,11 @@
     }
 
 }
+
+.owl-carousel .owl-stage-outer {
+    height: 100%;
+}
+
+.owl-carousel .owl-item img {
+    height: 400px;
+}
