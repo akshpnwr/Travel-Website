@@ -126,6 +126,7 @@
                       class="form-control"
                       id="title"
                       required
+                      value="This is a title"
                     />
                   </div>
                 </div>
@@ -155,27 +156,30 @@
                   cols="30"
                   rows="5"
                   required
-                ></textarea>
+                >
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Culpa reiciendis temporibus laborum, ipsam explicabo perferendis atque quisquam dolorem magni accusamus!
+              </textarea>
               </div>
 
               <div class="row">
                 <div class="col-12">
                   <h3>Available Tours</h3>
                   <div id="field">
-                    <div id="field0">
+                    <div id="field0" class="tour-item-form">
                       <!-- Tour Title and Image-->
                       <div class="row">
                         <div class="col-6">
                           <div class="form-group">
                             <label class="text-black" for="action_name"
-                              >Tour Name</label
+                              >Tour Title</label
                             >
                             <input
                               id="action_name"
-                              name="action_name"
+                              name="tour-title"
                               type="text"
                               placeholder=""
-                              class="form-control"
+                              class="form-control tour-title"
+                              value="tour name 0"
                             />
                           </div>
                         </div>
@@ -187,8 +191,8 @@
                             <input
                               type="file"
                               id="action_json"
-                              name="action_json"
-                              class="input-file form-control"
+                              name="tour-img"
+                              class="input-file form-control tour-img"
                             />
                             <div id="action_jsondisplay"></div>
                           </div>
@@ -199,13 +203,12 @@
                       <div class="form-group">
                         <label class="text-black" for="content">Content</label>
                         <textarea
-                          name="content"
-                          class="form-control"
+                          name="tour-content"
+                          class="form-control tour-content"
                           id="content"
                           cols="30"
                           rows="5"
-                          required
-                        ></textarea>
+                        >Tour content 0</textarea>
                       </div>
                     </div>
                   </div>
@@ -367,11 +370,11 @@
           var addRemove = "#field" + next;
           next = next + 1;
           var newIn =
-            '<div id="field' +
+            '<div class="tour-item-form" id="field' +
             next +
             '" name="field' +
             next +
-            '"><!-- Tour Title and Image--><div class="row"><div class="col-6"><div class="form-group"><label class="text-black" for="action_name">Tour Name</><input id="action_name" name="action_name" type="text" placeholder="" class="form-control"/></div></div><div class="col-6"><div class="form-group"><label class="text-black" for="action_json">Tour Image</label><input type="file" id="action_json" name="action_json" class="input-file form-control"/><div id="action_jsondisplay"></div></div></div></div><!--Tour content--><div class="form-group"><label class="text-black" for="content">Content</label><textarea name="content" class="form-control" id="content" cols="30" rows="5" required></textarea></div>';
+            '"><!-- Tour Title and Image--><div class="row"><div class="col-6"><div class="form-group"><label class="text-black" for="action_name">Tour Name</><input id="action_name" name="tour-title" type="text" placeholder="" class="form-control tour-title"/></div></div><div class="col-6"><div class="form-group"><label class="text-black" for="action_json">Tour Image</label><input type="file" id="action_json" name="tour-img" class="input-file form-control tour-img"/><div id="action_jsondisplay"></div></div></div></div><!--Tour content--><div class="form-group"><label class="text-black" for="content">Content</label><textarea name="tour-content" class="form-control tour-content" id="content" cols="30" rows="5" required></textarea></div>';
           var newInput = $(newIn);
           var removeBtn =
             '<button id="remove' +
