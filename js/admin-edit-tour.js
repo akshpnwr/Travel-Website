@@ -1,13 +1,4 @@
-const firebaseConfig = {
-  apiKey: "AIzaSyC8zCEHAmKsmNyaqAFceeQx1wxURgphLm4",
-  authDomain: "travel-website-5eae7.firebaseapp.com",
-  projectId: "travel-website-5eae7",
-  storageBucket: "travel-website-5eae7.appspot.com",
-  messagingSenderId: "448643634931",
-  appId: "1:448643634931:web:c117e915480ad67809c986",
-  measurementId: "G-RRENEGB7YK",
-};
-
+import { firebaseConfig } from "./firebaseConfig.js";
 // // Initialize Firebase
 const app = firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore(app);
@@ -18,7 +9,6 @@ const auth = firebase.auth();
 const logoutBtn = document.querySelector('.logout-btn');
 const tourMainTitle = document.querySelector('.tour-main-title');
 const tourMainContent = document.querySelector('.tour-main-content');
-const tourBannerImg = document.querySelector('#banner_image');
 const field = document.querySelector('#field');
 const formElement = document.querySelector('.contact-form');
 const loader = document.querySelector('.loader');

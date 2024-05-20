@@ -1,17 +1,8 @@
-const firebaseConfig = {
-  apiKey: "AIzaSyC8zCEHAmKsmNyaqAFceeQx1wxURgphLm4",
-  authDomain: "travel-website-5eae7.firebaseapp.com",
-  projectId: "travel-website-5eae7",
-  storageBucket: "travel-website-5eae7.appspot.com",
-  messagingSenderId: "448643634931",
-  appId: "1:448643634931:web:c117e915480ad67809c986",
-  measurementId: "G-RRENEGB7YK",
-};
+import { firebaseConfig } from "./firebaseConfig.js";
 
 // // Initialize Firebase
 const app = firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore(app);
-const storage = firebase.storage(app);
 
 const blogPostsContainer = document.querySelector('.blog-items');
 
@@ -23,7 +14,6 @@ document.addEventListener('DOMContentLoaded', async function () {
     let index = 0;
     querySnapshot.forEach((doc) => {
       // doc.data() is never undefined for query doc snapshots
-      console.log(doc.id, " => ", doc.data());
       const post = doc.data();
       let html = '';
 
@@ -119,6 +109,7 @@ document.addEventListener('DOMContentLoaded', async function () {
   const readMoreBtns = document.querySelectorAll('.read-more-button');
 
   let currentIndex = 0;
+  let intervalId;
 
   // Function to show next image and hide current image
   function showNextImage(sliderImages, currentIndex) {
@@ -135,7 +126,6 @@ document.addEventListener('DOMContentLoaded', async function () {
 
   // Function to start the slider
   function startSlider(sliderImages, currentIndex) {
-    console.log('startSlider');
     intervalId = setInterval(() => {
       currentIndex = showNextImage(sliderImages, currentIndex);
     }, 3000);

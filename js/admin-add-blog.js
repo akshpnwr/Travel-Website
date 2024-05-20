@@ -1,18 +1,4 @@
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-    apiKey: "AIzaSyC8zCEHAmKsmNyaqAFceeQx1wxURgphLm4",
-    authDomain: "travel-website-5eae7.firebaseapp.com",
-    projectId: "travel-website-5eae7",
-    storageBucket: "travel-website-5eae7.appspot.com",
-    messagingSenderId: "448643634931",
-    appId: "1:448643634931:web:c117e915480ad67809c986",
-    measurementId: "G-RRENEGB7YK",
-};
-
+import { firebaseConfig } from "./firebaseConfig.js";
 // // Initialize Firebase
 const app = firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore(app);
@@ -56,13 +42,7 @@ formElement.addEventListener('submit', async (e) => {
     const formData = new FormData(formElement);
     const title = formData.get('title');
     const content = formData.get('content');
-    // const bannerImageFile = formData.get('banner_image');
     const blogImageFiles = formData.getAll('blog_images');
-
-    // if (!bannerImageFile.type.startsWith('image/')) {
-    //     alert('Banner image file must be an image.');
-    //     return;
-    // }
 
     for (const imageFile of blogImageFiles) {
         if (!imageFile.type.startsWith('image/')) {
@@ -72,10 +52,7 @@ formElement.addEventListener('submit', async (e) => {
     }
 
     loader.style.display = 'block';
-    loaderText.textContent = 'Uploading images...'; // Append the text
     overlay.style.display = 'block';
-
-    // const bannerImgUrl = await uploadImage(bannerImageFile);
 
     const blogImageUrls = [];
     for (const imageFile of blogImageFiles) {

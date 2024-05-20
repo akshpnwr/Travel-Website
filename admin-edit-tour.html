@@ -312,7 +312,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-storage.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
-    <script src="./js/admin-edit-tour.js" defer></script>
+    <script src="./js/admin-edit-tour.js" type="module"></script>
 
     <script>
       $(document).ready(function () {
@@ -355,7 +355,6 @@
             e.preventDefault();
             var fieldNum = this.id.charAt(this.id.length - 1);
             var fieldID = "#field" + fieldNum;
-            console.log(fieldNum, this);
             $(this).remove();
             $(fieldID).remove();
           });
