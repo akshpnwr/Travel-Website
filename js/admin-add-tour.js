@@ -109,51 +109,8 @@ formElement.addEventListener('submit', async (e) => {
 
     await new Promise(r => setTimeout(r, 500));
 
-    // loaderText.textContent = '';
     resetLoading()
-
     formElement.reset();
-
-
-
-    // for (const imageFile of blogImageFiles) {
-    //     if (!imageFile.type.startsWith('image/')) {
-    //         alert('All blog image files must be images.');
-    //         return;
-    //     }
-    // }
-
-    // loader.style.display = 'block';
-    // loaderText.textContent = 'Uploading images...'; // Append the text
-    // overlay.style.display = 'block';
-
-    // // const bannerImgUrl = await uploadImage(bannerImageFile);
-
-    // const blogImageUrls = [];
-    // for (const imageFile of blogImageFiles) {
-    //     const imageUrl = await uploadImage(imageFile);
-    //     blogImageUrls.push(imageUrl);
-    // }
-
-    // const docRef = await db.collection("blog_posts").add({
-    //     title,
-    //     content,
-    //     // bannerImgUrl,
-    //     blogImageUrls
-    // });
-
-    // console.log("Document written with ID: ", docRef.id);
-    // loaderText.textContent = 'Successfull✅'; // Append the text
-    // spinner.style.display = 'none';
-
-    // await new Promise(r => setTimeout(r, 500));
-
-    // loaderText.textContent = '';
-    // loader.style.display = 'none';
-    // spinner.style.display = 'block'
-    // overlay.style.display = 'none';
-
-    // formElement.reset();
 });
 
 

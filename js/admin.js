@@ -1,16 +1,11 @@
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-    apiKey: "AIzaSyC8zCEHAmKsmNyaqAFceeQx1wxURgphLm4",
-    authDomain: "travel-website-5eae7.firebaseapp.com",
-    projectId: "travel-website-5eae7",
-    storageBucket: "travel-website-5eae7.appspot.com",
-    messagingSenderId: "448643634931",
-    appId: "1:448643634931:web:c117e915480ad67809c986",
-    measurementId: "G-RRENEGB7YK",
+  apiKey: "AIzaSyC8zCEHAmKsmNyaqAFceeQx1wxURgphLm4",
+  authDomain: "travel-website-5eae7.firebaseapp.com",
+  projectId: "travel-website-5eae7",
+  storageBucket: "travel-website-5eae7.appspot.com",
+  messagingSenderId: "448643634931",
+  appId: "1:448643634931:web:c117e915480ad67809c986",
+  measurementId: "G-RRENEGB7YK",
 };
 
 // // Initialize Firebase
@@ -26,85 +21,117 @@ const loaderText = loader.querySelector('.loader-text');
 const spinner = loader.querySelector('.spinner-border');
 const logoutBtn = document.querySelector('.logout-btn');
 
-const uploadImage = async (imageFile) => {
-    return new Promise((resolve, reject) => {
-        const storageRef = storage.ref();
-        const uploadTask = storageRef.child('images/' + imageFile.name).put(imageFile);
-
-        uploadTask.on('state_changed', function (snapshot) {
-            var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-            console.log('Upload is ' + progress + '% done');
-        }, function (error) {
-            console.log('Upload failed:', error);
-            reject(error);
-        }, function () {
-            uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
-                console.log('File available at', downloadURL);
-                resolve(downloadURL);
-            });
-        });
-    });
-}
-
 logoutBtn.addEventListener('click', async () => {
-    await firebase.auth().signOut();
-    window.location.href = '/';
+  await firebase.auth().signOut();
+  window.location.href = '/';
 });
 
-formElement.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const formData = new FormData(formElement);
-    const title = formData.get('title');
-    const content = formData.get('content');
-    // const bannerImageFile = formData.get('banner_image');
-    const blogImageFiles = formData.getAll('blog_images');
+const tourTableBody = document.querySelector('.tour-table-body');
+const blogTableBody = document.querySelector('.blog-table-body');
 
-    // if (!bannerImageFile.type.startsWith('image/')) {
-    //     alert('Banner image file must be an image.');
-    //     return;
-    // }
 
-    for (const imageFile of blogImageFiles) {
-        if (!imageFile.type.startsWith('image/')) {
-            alert('All blog image files must be images.');
-            return;
-        }
-    }
+document.addEventListener('DOMContentLoaded', async function () {
 
-    loader.style.display = 'block';
-    loaderText.textContent = 'Uploading images...'; // Append the text
-    overlay.style.display = 'block';
+  // tour location
+  await db.collection("tour_locations").get().then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+      // doc.data() is never undefined for query doc snapshots
+      const location = doc.data();
 
-    // const bannerImgUrl = await uploadImage(bannerImageFile);
+      const html = `<tr data-id=${doc.id}>
+            <td>${location.title}</td>
+            <td>
+              <a href="/admin-edit-tour.html?id=${doc.id}">
+                <button
+                  type="button"
+                  class="btn btn-success"
+                  style="padding: 5px 15px"
+                >
+                  <img
+                    src="images/edit-icon.png"
+                    alt=""
+                    srcset=""
+                    width="20px"
+                  />
+                </button>
+              </a>
+              <button
+                type="button"
+                class="btn btn-danger delete-tour-btn"
+                style="padding: 5px 15px"
+              >
+                <img
+                  src="images/delete-icon.png"
+                  alt=""
+                  srcset=""
+                  width="20px"
+                />
+              </button>
+            </td>
+          </tr>`;
+      tourTableBody.insertAdjacentHTML('beforeend', html);
+    })
+  })
 
-    const blogImageUrls = [];
-    for (const imageFile of blogImageFiles) {
-        const imageUrl = await uploadImage(imageFile);
-        blogImageUrls.push(imageUrl);
-    }
+  const deleteTourBtns = document.querySelectorAll('.delete-tour-btn');
+  deleteTourBtns.forEach(btn => btn.addEventListener('click', async (e) => {
+    const tourId = e.target.closest('tr').dataset.id;
+    await db.collection("tour_locations").doc(tourId).delete();
+    window.location.reload();
+  }))
 
-    const docRef = await db.collection("blog_posts").add({
-        title,
-        content,
-        // bannerImgUrl,
-        blogImageUrls
-    });
+  // blog posts
+  await db.collection("blog_posts").get().then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+      // doc.data() is never undefined for query doc snapshots
+      const post = doc.data();
+      console.log(doc.id, post);
 
-    console.log("Document written with ID: ", docRef.id);
-    loaderText.textContent = 'Successfull✅'; // Append the text
-    spinner.style.display = 'none';
+      const html = `<tr data-id=${doc.id}>
+            <td>${post.title}</td>
+            <td>
+              <a href="/admin-edit-blog.html?id=${doc.id}">
+                <button
+                type="button"
+                class="btn btn-success"
+                style="padding: 5px 15px"
+                >
+                <img
+                src="images/edit-icon.png"
+                alt=""
+                srcset=""
+                width="20px"
+                />
+                </button>
+              </a>
+              <button
+                type="button"
+                class="btn btn-danger delete-blog-btn"
+                style="padding: 5px 15px"
+              >
+                <img
+                  src="images/delete-icon.png"
+                  alt=""
+                  srcset=""
+                  width="20px"
+                />
+              </button>
+            </td>
+          </tr>`;
+      blogTableBody.insertAdjacentHTML('beforeend', html);
+    })
 
-    await new Promise(r => setTimeout(r, 500));
+    const deleteBlogBtns = document.querySelectorAll('.delete-blog-btn');
+    deleteBlogBtns.forEach(btn => btn.addEventListener('click', async (e) => {
+      const tourId = e.target.closest('tr').dataset.id;
+      await db.collection("blog_posts").doc(tourId).delete();
+      window.location.reload();
+    }))
 
-    loaderText.textContent = '';
-    loader.style.display = 'none';
-    spinner.style.display = 'block'
-    overlay.style.display = 'none';
-
-    formElement.reset();
-});
+  })
+})
 
 
 auth.onAuthStateChanged(function (user) {
-    if (!user) window.location.href = "/login.html";
+  if (!user) window.location.href = "/login.html";
 });

@@ -96,7 +96,7 @@
         <div class="row align-items-center">
           <div class="col-lg-6 mx-auto text-center">
             <div class="intro-wrap">
-              <h1 class="mb-3">Admin Panel</h1>
+              <h1 class="mb-3">Admin Main Panel</h1>
               <button
                 class="btn text-blue logout-btn"
                 style="background-color: white"
@@ -109,70 +109,65 @@
       </div>
     </div>
 
-    <div class="untree_co-section">
-      <div class="container">
-        <div class="row">
-          <div class="col-12 mb-5 mb-lg-0">
-            <form class="contact-form" data-aos="fade-up" data-aos-delay="200">
-              <div class="row">
-                <div class="col-6">
-                  <div class="form-group">
-                    <label class="text-black" for="title"
-                      >Title of the Blog</label
-                    >
-                    <input
-                      type="text"
-                      name="title"
-                      class="form-control"
-                      id="title"
-                      required
-                    />
-                  </div>
-                </div>
-              </div>
-              <!-- <div class="form-group">
-                <label class="text-black" for="banner_image"
-                  >Upload Banner Image</label
-                >
-                <input
-                  type="file"
-                  class="form-control"
-                  name="banner_image"
-                  id="banner_image"
-                />
-              </div> -->
-              <div class="form-group">
-                <label class="text-black" for="blog_images"
-                  >Upload Extra Images</label
-                >
-                <input
-                  type="file"
-                  class="form-control"
-                  name="blog_images"
-                  id="blog_images"
-                  multiple
-                  required
-                />
-              </div>
-
-              <div class="form-group">
-                <label class="text-black" for="content">Content</label>
-                <textarea
-                  name="content"
-                  class="form-control"
-                  id="content"
-                  cols="30"
-                  rows="5"
-                  required
-                ></textarea>
-              </div>
-              <button type="submit" class="btn btn-primary">Upload Blog</button>
-            </form>
-          </div>
+    <div class="container mt-4">
+      <div class="row">
+        <div class="col-12">
+          <h1>Tours</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <table class="table table-bordered tour-table">
+            <thead>
+              <tr>
+                <th scope="col">Tour name</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody class="tour-table-body"></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 text-center">
+          <a href="/admin-add-tour.html">
+            <button type="submit" class="btn btn-primary mx-auto">
+              Add Tour
+            </button>
+          </a>
         </div>
       </div>
     </div>
 
+    <div class="container mt-4">
+      <div class="row">
+        <div class="col-12">
+          <h1>Blog posts</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <table class="table table-bordered blog-table">
+            <thead>
+              <tr>
+                <th scope="col">Blog name</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody class="blog-table-body"></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 text-center">
+          <a href="/admin-add-blog.html">
+            <button type="submit" class="btn btn-primary mx-auto">
+              Add Blog
+            </button>
+          </a>
+        </div>
+      </div>
+    </div>
     <div class="site-footer">
       <div class="inner first">
         <div class="container">
@@ -299,6 +294,6 @@
     <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
 
-    <script src="./js/admin.js" type="module"></script>
+    <script src="js/admin.js"></script>
   </body>
 </html>

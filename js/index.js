@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                             >
                             <div class="media-text">
                                 <h3>${location.title}</h3>
-                                <span class="location">Italy</span>
+                                <span class="location">Read more</span>
                             </div>
                             <img
                                 src="${location.tourBannerImgUrl}"
@@ -81,6 +81,20 @@ document.addEventListener('DOMContentLoaded', async function () {
         $('.owl-carousel').owlCarousel('destroy');
         $('.owl-carousel').owlCarousel({
             // Your options here
+            loop: true,
+            margin: 10,
+            responsiveClass: true,
+            responsive: {
+                0: {
+                    items: 1,
+                    nav: true
+                },
+                600: {
+                    items: 3,
+                    nav: false
+                },
+
+            }
         });
     })
 });
