@@ -1,8 +1,3 @@
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
     apiKey: "AIzaSyC8zCEHAmKsmNyaqAFceeQx1wxURgphLm4",
     authDomain: "travel-website-5eae7.firebaseapp.com",
@@ -25,6 +20,15 @@ const overlay = document.querySelector('#overlayer');
 const loaderText = loader.querySelector('.loader-text');
 const spinner = loader.querySelector('.spinner-border');
 const logoutBtn = document.querySelector('.logout-btn');
+const blogTitle = document.querySelector('.blog-title');
+const blogContent = document.querySelector('.blog-content');
+
+const urlParams = new URLSearchParams(window.location.search);
+const id = urlParams.get('id');
+
+// Retrieve the location object from localStorage
+const data = JSON.parse(localStorage.getItem(`blog-${id}`));
+console.log(data);
 
 const uploadImage = async (imageFile) => {
     return new Promise((resolve, reject) => {
@@ -51,56 +55,60 @@ logoutBtn.addEventListener('click', async () => {
     window.location.href = '/';
 });
 
+blogTitle.value = data.title;
+blogContent.textContent = data.content;
+
 formElement.addEventListener('submit', async (e) => {
     e.preventDefault();
     const formData = new FormData(formElement);
     const title = formData.get('title');
     const content = formData.get('content');
-    // const bannerImageFile = formData.get('banner_image');
     const blogImageFiles = formData.getAll('blog_images');
 
-    // if (!bannerImageFile.type.startsWith('image/')) {
-    //     alert('Banner image file must be an image.');
-    //     return;
-    // }
-
     for (const imageFile of blogImageFiles) {
-        if (!imageFile.type.startsWith('image/')) {
+        if (imageFile.name != '' && !imageFile.type.startsWith('image/')) {
             alert('All blog image files must be images.');
             return;
         }
     }
-
     loader.style.display = 'block';
-    loaderText.textContent = 'Uploading images...'; // Append the text
+    // loaderText.textContent = 'Uploading images...'; // Append the text
     overlay.style.display = 'block';
-
-    // const bannerImgUrl = await uploadImage(bannerImageFile);
 
     const blogImageUrls = [];
     for (const imageFile of blogImageFiles) {
-        const imageUrl = await uploadImage(imageFile);
-        blogImageUrls.push(imageUrl);
+        if (imageFile.name != '') {
+            const imageUrl = await uploadImage(imageFile);
+            blogImageUrls.push(imageUrl);
+        }
     }
 
-    const docRef = await db.collection("blog_posts").add({
+    const blog = {
         title,
         content,
-        blogImageUrls
-    });
+        blogImageUrls: blogImageUrls.length > 0 ? blogImageUrls : data.blogImageUrls
+    }
 
-    console.log("Document written with ID: ", docRef.id);
-    loaderText.textContent = 'Successfull✅'; // Append the text
-    spinner.style.display = 'none';
+    console.log(blog);
 
-    await new Promise(r => setTimeout(r, 500));
+    try {
+        await db.collection('blog_posts').doc(id).update(blog);
+        localStorage.setItem(`blog-${id}`, JSON.stringify(blog));
 
-    loaderText.textContent = '';
-    loader.style.display = 'none';
-    spinner.style.display = 'block'
-    overlay.style.display = 'none';
+        loaderText.textContent = 'Successfull✅'; // Append the text
+        spinner.style.display = 'none';
 
-    formElement.reset();
+        await new Promise(r => setTimeout(r, 500));
+
+        loaderText.textContent = '';
+        loader.style.display = 'none';
+        spinner.style.display = 'block'
+        overlay.style.display = 'none';
+
+        window.location.href = "/admin.html"
+    } catch (error) {
+        console.log('upload failed:', error);
+    }
 });
 
 

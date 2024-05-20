@@ -1,11 +1,11 @@
 const firebaseConfig = {
-    apiKey: "AIzaSyC8zCEHAmKsmNyaqAFceeQx1wxURgphLm4",
-    authDomain: "travel-website-5eae7.firebaseapp.com",
-    projectId: "travel-website-5eae7",
-    storageBucket: "travel-website-5eae7.appspot.com",
-    messagingSenderId: "448643634931",
-    appId: "1:448643634931:web:c117e915480ad67809c986",
-    measurementId: "G-RRENEGB7YK",
+  apiKey: "AIzaSyC8zCEHAmKsmNyaqAFceeQx1wxURgphLm4",
+  authDomain: "travel-website-5eae7.firebaseapp.com",
+  projectId: "travel-website-5eae7",
+  storageBucket: "travel-website-5eae7.appspot.com",
+  messagingSenderId: "448643634931",
+  appId: "1:448643634931:web:c117e915480ad67809c986",
+  measurementId: "G-RRENEGB7YK",
 };
 
 // // Initialize Firebase
@@ -17,20 +17,20 @@ const blogPostsContainer = document.querySelector('.blog-items');
 
 document.addEventListener('DOMContentLoaded', async function () {
 
-    await db.collection("blog_posts").get().then((querySnapshot) => {
+  await db.collection("blog_posts").get().then((querySnapshot) => {
 
-        // const blog_posts = [];
-        let index = 0;
-        querySnapshot.forEach((doc) => {
-            // doc.data() is never undefined for query doc snapshots
-            console.log(doc.id, " => ", doc.data());
-            const post = doc.data();
-            let html = '';
+    // const blog_posts = [];
+    let index = 0;
+    querySnapshot.forEach((doc) => {
+      // doc.data() is never undefined for query doc snapshots
+      console.log(doc.id, " => ", doc.data());
+      const post = doc.data();
+      let html = '';
 
-            const trimmedContent = post.content.split(' ').slice(0, 90).join(' ') + '...';
-            const readMoreContent = post.content.split(' ').slice(90).join(' ');
-            if (index % 2 === 0) {
-                html = `
+      const trimmedContent = post.content.split(' ').slice(0, 90).join(' ') + '...';
+      const readMoreContent = post.content.split(' ').slice(90).join(' ');
+      if (index % 2 === 0) {
+        html = `
                 <section class="container position-relative travel-experts-container">
                 <div class="row">
                   <div class="col-md-6">
@@ -68,9 +68,9 @@ document.addEventListener('DOMContentLoaded', async function () {
                 </div>
               </section>
                 `;
-            }
-            else {
-                html = `
+      }
+      else {
+        html = `
                 <section
                 class="container position-relative travel-experts-container second-blog-container"
               >
@@ -108,52 +108,51 @@ document.addEventListener('DOMContentLoaded', async function () {
                 </div>
               </section>
               `
-            }
-            blogPostsContainer.insertAdjacentHTML('beforeend', html);
-            index++;
-        });
-
+      }
+      blogPostsContainer.insertAdjacentHTML('beforeend', html);
+      index++;
     });
 
-    const sliders = document.querySelectorAll('.slider');
-    const readMoreBtns = document.querySelectorAll('.read-more-button');
+  });
 
-    let currentIndex = 0;
-    let intervalId;
+  const sliders = document.querySelectorAll('.slider');
+  const readMoreBtns = document.querySelectorAll('.read-more-button');
 
-    // Function to show next image and hide current image
-    function showNextImage(sliderImages, currentIndex) {
-        sliderImages[currentIndex].classList.remove('slider-active');
+  let currentIndex = 0;
 
-        // Calculate the index of the next image
-        currentIndex = (currentIndex + 1) % sliderImages.length;
+  // Function to show next image and hide current image
+  function showNextImage(sliderImages, currentIndex) {
+    sliderImages[currentIndex].classList.remove('slider-active');
 
-        // Show the next image
-        sliderImages[currentIndex].classList.add('slider-active');
+    // Calculate the index of the next image
+    currentIndex = (currentIndex + 1) % sliderImages.length;
 
-        return currentIndex;
-    }
+    // Show the next image
+    sliderImages[currentIndex].classList.add('slider-active');
 
-    // Function to start the slider
-    function startSlider(sliderImages, currentIndex) {
-        console.log('startSlider');
-        intervalId = setInterval(() => {
-            currentIndex = showNextImage(sliderImages, currentIndex);
-        }, 3000);
-    }
+    return currentIndex;
+  }
 
-    sliders.forEach(slider => {
-        const sliderImgs = slider.querySelectorAll('.slider-img');
-        startSlider(sliderImgs, currentIndex)
+  // Function to start the slider
+  function startSlider(sliderImages, currentIndex) {
+    console.log('startSlider');
+    intervalId = setInterval(() => {
+      currentIndex = showNextImage(sliderImages, currentIndex);
+    }, 3000);
+  }
+
+  sliders.forEach(slider => {
+    const sliderImgs = slider.querySelectorAll('.slider-img');
+    startSlider(sliderImgs, currentIndex)
+  })
+
+  readMoreBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const blogContentMobile = btn.closest('.travel-experts-container').querySelector('.blog-content-mobile');
+      const blogContentDesktop = btn.closest('.travel-experts-container').querySelector('.blog-content-desktop');
+
+      blogContentMobile.classList.toggle('show');
+      blogContentDesktop.classList.toggle('show');
     })
-
-    readMoreBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const blogContentMobile = btn.closest('.travel-experts-container').querySelector('.blog-content-mobile');
-            const blogContentDesktop = btn.closest('.travel-experts-container').querySelector('.blog-content-desktop');
-
-            blogContentMobile.classList.toggle('show');
-            blogContentDesktop.classList.toggle('show');
-        })
-    })
+  })
 });

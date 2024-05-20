@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     querySnapshot.forEach((doc) => {
       // doc.data() is never undefined for query doc snapshots
       const post = doc.data();
-      console.log(doc.id, post);
+      localStorage.setItem(`blog-${doc.id}`, JSON.stringify(post));
 
       const html = `<tr data-id=${doc.id}>
             <td>${post.title}</td>

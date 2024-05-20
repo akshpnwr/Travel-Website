@@ -127,7 +127,6 @@ formElement.addEventListener('submit', async (e) => {
   const tourBannerImageFile = formData.get('banner_image');
   const tourItemForms = document.querySelectorAll('.tour-item-form');
 
-  console.log(tourBannerImageFile);
   if (tourBannerImageFile.name != '' && !tourBannerImageFile.type.startsWith('image/')) {
     alert('Banner image file must be an image.');
     resetLoading()
@@ -151,8 +150,6 @@ formElement.addEventListener('submit', async (e) => {
     const tourContent = tourItemForm.querySelector('.tour-content').value;
     const tourImgFile = tourItemForm.querySelector('.tour-img').files[0];
 
-    console.log(tourItemForm.querySelector('.tour-img'));
-
     if (tourImgFile && !tourImgFile.type.startsWith('image/')) {
       alert('All tour files must be images.');
       resetLoading()
@@ -171,7 +168,6 @@ formElement.addEventListener('submit', async (e) => {
     tourBannerImgUrl,
     tours
   }
-  console.log(location);
   await db.collection('tour_locations').doc(id).update(location);
   localStorage.setItem(`location-${id}`, JSON.stringify(location));
 
