@@ -1,9 +1,3 @@
-<!-- /*
-* Template Name: Tour
-* Template Author: Untree.co
-* Tempalte URI: https://untree.co/
-* License: https://creativecommons.org/licenses/by/3.0/
-*/ -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -12,7 +6,6 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-    <meta name="author" content="Untree.co" />
     <link rel="shortcut icon" href="favicon.png" />
 
     <meta name="description" content="" />
@@ -35,7 +28,7 @@
     <link rel="stylesheet" href="css/aos.css" />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/index.css" />
-    <title>Traveler</title>
+    <title>Easy Prime Holidays</title>
   </head>
 
   <body>
@@ -52,31 +45,15 @@
       <div class="container">
         <div class="site-navigation">
           <a href="index.html" class="logo m-0"
-            >Tour <span class="text-primary">.</span></a
+            >Easy Prime Holidays <span class="text-primary">.</span></a
           >
 
           <ul
             class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right"
           >
             <li class="active"><a href="index.html">Home</a></li>
-            <li class="has-children">
-              <a href="#">Dropdown</a>
-              <ul class="dropdown">
-                <li><a href="elements.html">Elements</a></li>
-                <li><a href="#">Menu One</a></li>
-                <li class="has-children">
-                  <a href="#">Menu Two</a>
-                  <ul class="dropdown">
-                    <li><a href="#">Sub Menu One</a></li>
-                    <li><a href="#">Sub Menu Two</a></li>
-                    <li><a href="#">Sub Menu Three</a></li>
-                  </ul>
-                </li>
-                <li><a href="#">Menu Three</a></li>
-              </ul>
-            </li>
-            <li><a href="services.html">Services</a></li>
             <li><a href="blog.html">Blogs</a></li>
+            <li><a href="services.html">Services</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="contact.html">Contact Us</a></li>
           </ul>
@@ -163,29 +140,24 @@
           <div class="col-lg-5">
             <div class="slides">
               <img
-                src="images/hero-slider-1.jpg"
+                src="images/landing-slider/1.jpg"
                 alt="Image"
                 class="img-fluid active"
               />
               <img
-                src="images/hero-slider-2.jpg"
+                src="images/landing-slider/2.jpg"
                 alt="Image"
-                class="img-fluid"
+                class="img-fluid active"
               />
               <img
-                src="images/hero-slider-3.jpg"
+                src="images/landing-slider/3.jpg"
                 alt="Image"
-                class="img-fluid"
+                class="img-fluid active"
               />
               <img
-                src="images/hero-slider-4.jpg"
+                src="images/landing-slider/4.jpg"
                 alt="Image"
-                class="img-fluid"
-              />
-              <img
-                src="images/hero-slider-5.jpg"
-                alt="Image"
-                class="img-fluid"
+                class="img-fluid active"
               />
             </div>
           </div>
@@ -199,10 +171,9 @@
           <div class="col-lg-6 text-center">
             <h2 class="section-title text-center mb-3">Our Services</h2>
             <p>
-              Far far away, behind the word mountains, far from the countries
-              Vokalia and Consonantia, there live the blind texts. Separated
-              they live in Bookmarksgrove right at the coast of the Semantics, a
-              large language ocean.
+              We curate Great Holiday Experiences for people visiting
+              Mussoorie-Uttarakhand with utmost sincerity, dedication &
+              professionalism.
             </p>
           </div>
         </div>
@@ -211,8 +182,13 @@
             <div class="h-100">
               <div class="frame h-100">
                 <div
-                  class="feature-img-bg h-100"
-                  style="background-image: url('images/hero-slider-1.jpg')"
+                  class="feature-img-bg h-100 services-banner"
+                  style="
+                    background-image: url('images/services-banner.jpg');
+                    @media (min-width: 992px) {
+                      height: 600px !important;
+                    }
+                  "
                 ></div>
               </div>
             </div>
@@ -224,21 +200,28 @@
             <div class="feature-1 d-md-flex">
               <div class="align-self-center">
                 <span class="flaticon-house display-4 text-primary"></span>
-                <h3>Beautiful Condo</h3>
+                <h3>Destination Holiday Packages</h3>
                 <p class="mb-0">
-                  Even the all-powerful Pointing has no control about the blind
-                  texts.
+                  Explore our exclusive destination holiday packages and embark
+                  on the vacation of your dreams!
                 </p>
               </div>
             </div>
 
             <div class="feature-1">
               <div class="align-self-center">
-                <span class="flaticon-restaurant display-4 text-primary"></span>
-                <h3>Restaurants & Cafe</h3>
+                <span class="display-4 text-primary">
+                  <img
+                    src="./images/icons/transport.png"
+                    class="w-25"
+                    alt=""
+                    srcset=""
+                  />
+                </span>
+                <h3>Premium Transport services</h3>
                 <p class="mb-0">
-                  Even the all-powerful Pointing has no control about the blind
-                  texts.
+                  Experience luxury and comfort with our premium transport
+                  services
                 </p>
               </div>
             </div>
@@ -249,22 +232,36 @@
           >
             <div class="feature-1 d-md-flex">
               <div class="align-self-center">
-                <span class="flaticon-mail display-4 text-primary"></span>
-                <h3>Easy to Connect</h3>
+                <span class="display-4 text-primary">
+                  <img
+                    src="./images/icons/tours.png"
+                    class="w-25"
+                    alt=""
+                    srcset=""
+                  />
+                </span>
+                <h3>Guided Tours & Walks</h3>
                 <p class="mb-0">
-                  Even the all-powerful Pointing has no control about the blind
-                  texts.
+                  Join our guided tours and walks for an unforgettable journey
+                  through stunning landscapes and rich history.
                 </p>
               </div>
             </div>
 
             <div class="feature-1 d-md-flex">
               <div class="align-self-center">
-                <span class="flaticon-phone-call display-4 text-primary"></span>
-                <h3>24/7 Support</h3>
+                <span class="display-4 text-primary">
+                  <img
+                    src="./images/icons/trek.png"
+                    class="w-25"
+                    alt=""
+                    srcset=""
+                  />
+                </span>
+                <h3>Treks & Outdoor Activities</h3>
                 <p class="mb-0">
-                  Even the all-powerful Pointing has no control about the blind
-                  texts.
+                  Embark on thrilling treks and outdoor activities for an
+                  adventure like no other.
                 </p>
               </div>
             </div>
@@ -327,24 +324,28 @@
     <div class="untree_co-section testimonial-section mt-5">
       <div class="container">
         <div class="row justify-content-center">
-          <div class="col-lg-7 text-center">
+          <div class="col-lg-12 text-center">
             <h2 class="section-title text-center mb-5">Testimonials</h2>
 
             <div class="owl-single owl-carousel no-nav">
               <div class="testimonial mx-auto">
                 <figure class="img-wrap">
                   <img
-                    src="images/person_2.jpg"
+                    src="https://avatar.iran.liara.run/public/64"
                     alt="Image"
                     class="img-fluid"
                   />
                 </figure>
-                <h3 class="name">Adam Aderson</h3>
+                <h3 class="name">Aparna J</h3>
                 <blockquote>
                   <p>
-                    &ldquo;There live the blind texts. Separated they live in
-                    Bookmarksgrove right at the coast of the Semantics, a large
-                    language ocean.&rdquo;
+                    &ldquo;Yash from Easy Prime holidays has been fantastic tour
+                    guide and went above our expectations. He is very
+                    knowledgeable with various topics including local geography,
+                    Fauna & flora and significant cultural diversity. He also
+                    suggested few things for us to explore in our destination.
+                    We had a great time and wishing him all the very
+                    best.&rdquo;
                   </p>
                 </blockquote>
               </div>
@@ -352,17 +353,20 @@
               <div class="testimonial mx-auto">
                 <figure class="img-wrap">
                   <img
-                    src="images/person_3.jpg"
+                    src="https://avatar.iran.liara.run/public/boy"
                     alt="Image"
                     class="img-fluid"
                   />
                 </figure>
-                <h3 class="name">Lukas Devlin</h3>
+                <h3 class="name">Sourab</h3>
                 <blockquote>
                   <p>
-                    &ldquo;There live the blind texts. Separated they live in
-                    Bookmarksgrove right at the coast of the Semantics, a large
-                    language ocean.&rdquo;
+                    &ldquo;From the moment we embarked on our treks, it was
+                    evident that he possessed an incredible wealth of knowledge
+                    about the local history and its flora and fauna. His
+                    insights added a whole new dimension to our journey, as he
+                    shared fascinating stories and facts about the natural world
+                    around us.&rdquo;
                   </p>
                 </blockquote>
               </div>
@@ -370,17 +374,20 @@
               <div class="testimonial mx-auto">
                 <figure class="img-wrap">
                   <img
-                    src="images/person_4.jpg"
+                    src="https://avatar.iran.liara.run/public/88"
                     alt="Image"
                     class="img-fluid"
                   />
                 </figure>
-                <h3 class="name">Kayla Bryant</h3>
+                <h3 class="name">Vaiva L</h3>
                 <blockquote>
                   <p>
-                    &ldquo;There live the blind texts. Separated they live in
-                    Bookmarksgrove right at the coast of the Semantics, a large
-                    language ocean.&rdquo;
+                    &ldquo;Rohit was an amazing guide! He had organised the day
+                    according to my needs. And not only he knows a lot about his
+                    area (even the types of trees and legends of the forests)
+                    but is also a good person to have fun random conversations
+                    with. It felt like exploring the place with a very
+                    knowledgeable friend.&rdquo;
                   </p>
                 </blockquote>
               </div>
@@ -398,10 +405,9 @@
               Special Offers &amp; Discounts
             </h2>
             <p>
-              Far far away, behind the word mountains, far from the countries
-              Vokalia and Consonantia, there live the blind texts. Separated
-              they live in Bookmarksgrove right at the coast of the Semantics, a
-              large language ocean.
+              Discover amazing deals and exclusive discounts on our top
+              products. Save big with our special offers and enjoy unbeatable
+              prices today!
             </p>
           </div>
         </div>
@@ -410,19 +416,19 @@
             <div class="media-1">
               <a href="#" class="d-block mb-3"
                 ><img
-                  src="images/hero-slider-1.jpg"
+                  src="images/discounts/benog-tibba.jpg"
                   alt="Image"
                   class="img-fluid"
               /></a>
               <span class="d-flex align-items-center loc mb-2">
                 <span class="icon-room mr-3"></span>
-                <span>Italy</span>
+                <span>Mussoorie</span>
               </span>
               <div class="d-flex align-items-center">
                 <div>
-                  <h3><a href="#">Rialto Mountains</a></h3>
+                  <h3><a href="#">Benog Tibba Day Hike</a></h3>
                   <div class="price ml-auto">
-                    <span>$520.00</span>
+                    <span>₹1500.00</span>
                   </div>
                 </div>
               </div>
@@ -432,19 +438,19 @@
             <div class="media-1">
               <a href="#" class="d-block mb-3"
                 ><img
-                  src="images/hero-slider-2.jpg"
+                  src="images/discounts/hathipaon.jpg"
                   alt="Image"
                   class="img-fluid"
               /></a>
               <span class="d-flex align-items-center loc mb-2">
                 <span class="icon-room mr-3"></span>
-                <span>United States</span>
+                <span>Mussoorie</span>
               </span>
               <div class="d-flex align-items-center">
                 <div>
-                  <h3><a href="#">San Francisco</a></h3>
+                  <h3><a href="#">Hathipaon Hike & Nature Walk</a></h3>
                   <div class="price ml-auto">
-                    <span>$520.00</span>
+                    <span>₹1500.00</span>
                   </div>
                 </div>
               </div>
@@ -454,19 +460,21 @@
             <div class="media-1">
               <a href="#" class="d-block mb-3"
                 ><img
-                  src="images/hero-slider-3.jpg"
+                  src="images/discounts/guide.jpg"
                   alt="Image"
                   class="img-fluid"
               /></a>
               <span class="d-flex align-items-center loc mb-2">
                 <span class="icon-room mr-3"></span>
-                <span>Malaysia</span>
+                <span>Mussoorie</span>
               </span>
               <div class="d-flex align-items-center">
                 <div>
-                  <h3><a href="#">Perhentian Islands</a></h3>
+                  <h3>
+                    <a href="#">Exploring Mussoorie With A Local Guide</a>
+                  </h3>
                   <div class="price ml-auto">
-                    <span>$750.00</span>
+                    <span>₹1500.00</span>
                   </div>
                 </div>
               </div>
@@ -476,21 +484,21 @@
             <div class="media-1">
               <a href="#" class="d-block mb-3"
                 ><img
-                  src="images/hero-slider-4.jpg"
+                  src="images/discounts/top-tibba.jpg"
                   alt="Image"
                   class="img-fluid"
               /></a>
 
               <span class="d-flex align-items-center loc mb-2">
                 <span class="icon-room mr-3"></span>
-                <span>Switzerland</span>
+                <span>Mussoorie</span>
               </span>
 
               <div class="d-flex align-items-center">
                 <div>
-                  <h3><a href="#">Lake Thun</a></h3>
+                  <h3><a href="#">Top Tibba Trek</a></h3>
                   <div class="price ml-auto">
-                    <span>$520.00</span>
+                    <span>₹1500.00</span>
                   </div>
                 </div>
               </div>
@@ -526,29 +534,34 @@
               Take a look at Tour Video
             </h2>
             <p>
-              Far far away, behind the word mountains, far from the countries
-              Vokalia and Consonantia, there live the blind texts. Separated
-              they live in Bookmarksgrove right at the coast of the Semantics, a
-              large language ocean.
+              A Recreational & Outdoor Activities Organising Company Based in
+              Mussoorie-India. We curate Great Holiday Experiences for people
+              visiting Mussoorie-Uttarakhand with utmost sincerity, dedication &
+              professionalism.
             </p>
 
             <p class="mb-4">
-              A small river named Duden flows by their place and supplies it
-              with the necessary regelialia. It is a paradisematic country, in
-              which roasted parts of sentences fly into your mouth.
+              Some of our Treks, Tours & Experiences are listed here. For more
+              options & customised experiences, contact us! We guarantee you a
+              wonderful time ahead!
             </p>
 
             <ul class="list-unstyled two-col clearfix">
-              <li>Outdoor recreation activities</li>
-              <li>Airlines</li>
-              <li>Car Rentals</li>
-              <li>Cruise Lines</li>
-              <li>Hotels</li>
-              <li>Railways</li>
-              <li>Travel Insurance</li>
-              <li>Package Tours</li>
-              <li>Insurance</li>
-              <li>Guide Books</li>
+              <li>24 X 7 Taxi & Cab Service</li>
+              <li>Sedans, SUVs, Tempo Travellers & Coaches Available</li>
+              <li>
+                Hotel & Resort
+                <br />
+                Bookings
+              </li>
+              <li>Complete Tour Packages</li>
+              <li>
+                Guided Sightseeing Tours <br />
+                & Treks
+              </li>
+              <li>Char Dham Yatra & Uttarakhand Tour Packages</li>
+              <li>Overnight Multi Day Treks & Outdoor Trips</li>
+              <li>Yoga & Spiritual Tour Packages</li>
             </ul>
 
             <p><a href="#" class="btn btn-primary">Get Started</a></p>
@@ -565,8 +578,7 @@
               Lets you Explore the Best. Contact Us Now
             </h2>
             <p class="mb-4 lead text-white text-white-opacity">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Excepturi, fugit?
+              We deal in Customised Trips and Tour Packages
             </p>
             <p class="mb-0">
               <a
@@ -584,12 +596,14 @@
       <div class="inner first">
         <div class="container">
           <div class="row">
-            <div class="col-md-6 col-lg-4">
+            <div class="col-12 col-md-4">
               <div class="widget">
                 <h3 class="heading">About Tour</h3>
                 <p>
-                  Far far away, behind the word mountains, far from the
-                  countries Vokalia and Consonantia, there live the blind texts.
+                  A Recreational & Outdoor Activities Organising Company Based
+                  in Mussoorie-India. We curate Great Holiday Experiences for
+                  people visiting Mussoorie-Uttarakhand with utmost sincerity,
+                  dedication & professionalism.
                 </p>
               </div>
               <div class="widget">
@@ -621,34 +635,26 @@
                 </ul>
               </div>
             </div>
-            <div class="col-md-6 col-lg-2 pl-lg-5">
+            <div class="col-6 col-md-4">
               <div class="widget">
                 <h3 class="heading">Pages</h3>
                 <ul class="links list-unstyled">
-                  <li><a href="#">Blog</a></li>
-                  <li><a href="#">About</a></li>
-                  <li><a href="#">Contact</a></li>
+                  <li><a href="blog.html">Blog</a></li>
+                  <li><a href="about.html">About</a></li>
+                  <li><a href="contact.html">Contact</a></li>
                 </ul>
               </div>
             </div>
-            <div class="col-md-6 col-lg-2">
-              <div class="widget">
-                <h3 class="heading">Resources</h3>
-                <ul class="links list-unstyled">
-                  <li><a href="#">Blog</a></li>
-                  <li><a href="#">About</a></li>
-                  <li><a href="#">Contact</a></li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-md-6 col-lg-4">
+            <div class="col-6 col-md-4">
               <div class="widget">
                 <h3 class="heading">Contact</h3>
                 <ul class="list-unstyled quick-info links">
-                  <li class="email"><a href="#">mail@example.com</a></li>
-                  <li class="phone"><a href="#">+1 222 212 3819</a></li>
+                  <li class="email text-break">
+                    <a href="#">uttarakhandepholidays@gmail.com</a>
+                  </li>
+                  <li class="phone"><a href="#">+91 8171708654</a></li>
                   <li class="address">
-                    <a href="#">43 Raymouth Rd. Baltemoer, London 3910</a>
+                    <a href="#"> Dehradun, Uttarakhand</a>
                   </li>
                 </ul>
               </div>
@@ -666,11 +672,7 @@
                 <script>
                   document.write(new Date().getFullYear());
                 </script>
-                . All Rights Reserved. &mdash; Designed with love by
-                <a href="https://untree.co" class="link-highlight">Untree.co</a>
-                <!-- License information: https://untree.co/license/ -->Distributed
-                By
-                <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
+                . All Rights Reserved. &mdash; Designed with love
               </p>
             </div>
           </div>
@@ -707,13 +709,7 @@
         });
 
         var typed = new Typed(".typed-words", {
-          strings: [
-            "San Francisco.",
-            " Paris.",
-            " New Zealand.",
-            " Maui.",
-            " London.",
-          ],
+          strings: ["Mussoorie.", " Rishikesh.", " Chakrata."],
           typeSpeed: 80,
           backSpeed: 80,
           backDelay: 4000,
