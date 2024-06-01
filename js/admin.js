@@ -15,11 +15,14 @@ logoutBtn.addEventListener('click', async () => {
 const tourTableBody = document.querySelector('.tour-table-body');
 const blogTableBody = document.querySelector('.blog-table-body');
 
-
 document.addEventListener('DOMContentLoaded', async function () {
 
   // tour location
+  tourTableBody.innerHTML = '<p class="ml-3">Loading...</p>';
+  blogTableBody.innerHTML = '<p class="ml-3">Loading...</p>';
+
   await db.collection("tour_locations").get().then((querySnapshot) => {
+    tourTableBody.innerHTML = '';
     querySnapshot.forEach((doc) => {
       // doc.data() is never undefined for query doc snapshots
       const location = doc.data();
@@ -68,6 +71,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
   // blog posts
   await db.collection("blog_posts").get().then((querySnapshot) => {
+    blogTableBody.innerHTML = '';
     querySnapshot.forEach((doc) => {
       // doc.data() is never undefined for query doc snapshots
       const post = doc.data();
