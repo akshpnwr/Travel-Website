@@ -838,14 +838,14 @@ h4,
 }
 
 .hero .slides {
-  background: #ffffff;
+  /* background: #ffffff; */
   max-width: 800px;
   left: -100px;
   z-index: 0;
   position: relative;
   border-radius: 200px;
-  -webkit-box-shadow: 0 25px 50px -10px rgba(26, 55, 77, 0.4);
-  box-shadow: 0 25px 50px -10px rgba(26, 55, 77, 0.4);
+  /* -webkit-box-shadow: 0 25px 50px -10px rgba(26, 55, 77, 0.4); */
+  /* box-shadow: 0 25px 50px -10px rgba(26, 55, 77, 0.4); */
   height: 608px;
   margin-bottom: -200px;
 }
