@@ -103,7 +103,7 @@
                 <div class="col-6">
                   <div class="form-group">
                     <label class="text-black" for="title"
-                      >Title of the Tour</label
+                      >Destination</label
                     >
                     <input
                       type="text"
@@ -149,7 +149,7 @@
                   <h3>Available Tours</h3>
                   <div id="field">
                     <div id="field0" class="tour-item-form">
-                      <!-- Tour Title and Image-->
+                      <!-- Tour Title, price and image -->
                       <div class="row">
                         <div class="col-6">
                           <div class="form-group">
@@ -162,6 +162,20 @@
                               type="text"
                               placeholder=""
                               class="form-control tour-title"
+                            />
+                          </div>
+                        </div>
+                        <div class="col-6">
+                          <div class="form-group">
+                            <label class="text-black" for="action_name"
+                              >Tour Price</label
+                            >
+                            <input
+                              id="action_name"
+                              name="tour-price"
+                              type="number"
+                              placeholder=""
+                              class="form-control tour-price"
                             />
                           </div>
                         </div>
@@ -347,7 +361,7 @@
             next +
             '" name="field' +
             next +
-            '"><!-- Tour Title and Image--><div class="row"><div class="col-6"><div class="form-group"><label class="text-black" for="action_name">Tour Name</><input id="action_name" name="tour-title" type="text" placeholder="" class="form-control tour-title"/></div></div><div class="col-6"><div class="form-group"><label class="text-black" for="action_json">Tour Image</label><input type="file" id="action_json" name="tour-img" class="input-file form-control tour-img"/><div id="action_jsondisplay"></div></div></div></div><!--Tour content--><div class="form-group"><label class="text-black" for="content">Content</label><textarea name="tour-content" class="form-control tour-content" id="content" cols="30" rows="5" required></textarea></div>';
+            '"><!-- Tour Title and Image--><div class="row"><div class="col-6"><div class="form-group"><label class="text-black" for="action_name">Tour Name</><input id="action_name" name="tour-title" type="text" placeholder="" class="form-control tour-title"/></div></div><div class="col-6"><div class="form-group"><label class="text-black" for="action_name">Tour Price</label><input id="action_name" name="tour-price" type="number" placeholder="" class="form-control tour-price" /></div></div><div class="col-6"><div class="form-group"><label class="text-black" for="action_json">Tour Image</label><input type="file" id="action_json" name="tour-img" class="input-file form-control tour-img"/><div id="action_jsondisplay"></div></div></div></div><!--Tour content--><div class="form-group"><label class="text-black" for="content">Content</label><textarea name="tour-content" class="form-control tour-content" id="content" cols="30" rows="5" required></textarea></div>';
           var newInput = $(newIn);
           var removeBtn =
             '<button id="remove' +

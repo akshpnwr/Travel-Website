@@ -72,10 +72,14 @@ formElement.addEventListener('submit', async (e) => {
 
     const tours = [];
 
+    let index = 0;
     for (const tourItemForm of tourItemForms) {
         const tourTitle = tourItemForm.querySelector('.tour-title').value;
         const tourContent = tourItemForm.querySelector('.tour-content').value;
+        const tourPrice = tourItemForm.querySelector('.tour-price').value;
         const tourImgFile = tourItemForm.querySelector('.tour-img').files[0];
+        const tourId = title + "-" + tourTitle + "-" + index;
+
         if (!tourImgFile.type.startsWith('image/')) {
             alert('All tour files must be images.');
             resetLoading()
@@ -83,7 +87,9 @@ formElement.addEventListener('submit', async (e) => {
         }
         const tourImgUrl = await uploadImage(tourImgFile);
         console.log(tourImgUrl);
-        tours.push({ tourTitle, tourContent, tourImgUrl });
+        tours.push({ id: tourId, tourTitle, tourContent, tourImgUrl, tourPrice });
+
+        index++;
     }
 
     const location = {

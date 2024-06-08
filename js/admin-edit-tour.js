@@ -77,6 +77,21 @@ data.tours.forEach((tour, index) => {
       </div>
       <div class="col-6">
         <div class="form-group">
+          <label class="text-black" for="action_name"
+            >Tour Price</label
+          >
+          <input
+            id="action_name"
+            name="tour-price"
+            type="number"
+            placeholder=""
+            class="form-control tour-price"
+            value="${tour.tourPrice}"
+          />
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-group">
           <label class="text-black" for="action_json"
             >Tour Image</label
           >
@@ -138,7 +153,9 @@ formElement.addEventListener('submit', async (e) => {
   for (const tourItemForm of tourItemForms) {
     const tourTitle = tourItemForm.querySelector('.tour-title').value;
     const tourContent = tourItemForm.querySelector('.tour-content').value;
+    const tourPrice = tourItemForm.querySelector('.tour-price').value;
     const tourImgFile = tourItemForm.querySelector('.tour-img').files[0];
+    const tourId = title + "-" + tourTitle + "-" + index;
 
     if (tourImgFile && !tourImgFile.type.startsWith('image/')) {
       alert('All tour files must be images.');
@@ -149,7 +166,9 @@ formElement.addEventListener('submit', async (e) => {
     if (tourImgFile) {
       tourImgUrl = await uploadImage(tourImgFile);
     }
-    tours.push({ tourTitle, tourContent, tourImgUrl });
+    tours.push({ id: tourId, tourTitle, tourContent, tourImgUrl, tourPrice });
+
+    index++;
   }
 
   const location = {
