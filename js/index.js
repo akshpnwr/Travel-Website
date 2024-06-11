@@ -53,7 +53,6 @@ document.addEventListener('DOMContentLoaded', async function () {
         const sliderItemHtml = []
         // Store the location objects in localStorage
         querySnapshot.forEach((doc) => {
-            console.log(doc.id, " => ", doc.data());
             const location = doc.data();
             // Store the location object in localStorage
             localStorage.setItem(`location-${doc.id}`, JSON.stringify(location));
@@ -114,14 +113,21 @@ document.addEventListener('DOMContentLoaded', async function () {
     }
     console.log(locations);
 
-    locations.forEach(location => {
-        const locationTitle = location.title;
+    const tours = []
 
+    locations.forEach(location => {
         location.tours.forEach(tour => {
-            const discountItemHtml = `
-            <div class="col-6 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0" data-id="${tour.id}">
+            tours.push({ location: location.title, ...tour })
+        })
+    })
+
+    localStorage.setItem('tours', JSON.stringify(tours));
+    const discountItemHtml = []
+    tours.forEach(tour => {
+        const html = `
+            <div class="item" data-id="${tour.id}">
                 <div class="media-1">
-                    <a href="#" class="d-block mb-3"
+                    <a href="special-tour.html?id=${tour.id}" class="d-block mb-3"
                     ><img
                     src="${tour.tourImgUrl}"
                     alt="Image"
@@ -129,7 +135,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                     /></a>
                     <span class="d-flex align-items-center loc mb-2">
                     <span class="icon-room mr-3"></span>
-                    <span>${locationTitle}</span>
+                    <span>${tour.location}</span>
                     </span>
                     <div class="d-flex align-items-center">
                         <div>
@@ -142,9 +148,29 @@ document.addEventListener('DOMContentLoaded', async function () {
                 </div>
             </div>`;
 
-            discountItemContainer.insertAdjacentHTML('beforeend', discountItemHtml);
-        })
+        discountItemHtml.push(html);
     })
+    discountItemContainer.innerHTML = discountItemHtml.join('')
+
+    $('.owl-carousel').owlCarousel('destroy');
+    $('.owl-carousel').owlCarousel({
+        // Your options here
+        loop: true,
+        margin: 10,
+        responsiveClass: true,
+        responsive: {
+            0: {
+                items: 1,
+                nav: true
+            },
+            600: {
+                items: 3,
+                nav: false
+            },
+
+        }
+    });
+
 });
 
 searchBtn.addEventListener('click', async function (e) {
