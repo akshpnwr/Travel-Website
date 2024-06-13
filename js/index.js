@@ -127,7 +127,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         const html = `
             <div class="item" data-id="${tour.id}">
                 <div class="media-1">
-                    <a href="special-tour.html?id=${tour.id}" class="d-block mb-3"
+                    <a href="special-tour.html?id=${tour.id}" target="_blank" class="d-block mb-3"
                     ><img
                     src="${tour.tourImgUrl}"
                     alt="Image"

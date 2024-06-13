@@ -78,6 +78,7 @@ formElement.addEventListener('submit', async (e) => {
         const tourContent = tourItemForm.querySelector('.tour-content').value;
         const tourPrice = tourItemForm.querySelector('.tour-price').value;
         const tourImgFile = tourItemForm.querySelector('.tour-img').files[0];
+        const tourImgExtraFiles = tourItemForm.querySelector('.tour-img-extra').files;
         const tourId = title + "-" + tourTitle + "-" + index;
 
         if (!tourImgFile.type.startsWith('image/')) {
@@ -85,9 +86,24 @@ formElement.addEventListener('submit', async (e) => {
             resetLoading()
             return;
         }
+
+        for (const tourImgExtraFile of tourImgExtraFiles) {
+            if (!tourImgExtraFile.type.startsWith('image/')) {
+                alert('All tour files must be images.');
+                resetLoading()
+                return;
+            }
+        }
+
         const tourImgUrl = await uploadImage(tourImgFile);
-        console.log(tourImgUrl);
-        tours.push({ id: tourId, tourTitle, tourContent, tourImgUrl, tourPrice });
+
+        const tourImgExtraUrls = []
+        for (const tourImgExtraFile of tourImgExtraFiles) {
+            const tourImgExtraUrl = await uploadImage(tourImgExtraFile);
+            tourImgExtraUrls.push(tourImgExtraUrl);
+        }
+
+        tours.push({ id: tourId, tourTitle, tourContent, tourImgUrl, tourPrice, tourImgExtraUrls });
 
         index++;
     }

@@ -104,6 +104,21 @@ data.tours.forEach((tour, index) => {
           <div id="action_jsondisplay"></div>
         </div>
       </div>
+      <div class="col-6">
+        <div class="form-group">
+          <label class="text-black" for="extra_tour_images"
+            >Upload Extra Images</label
+          >
+          <input
+            type="file"
+            class="form-control tour-img-extra"
+            name="extra_tour_images"
+            id="extra_tour_images"
+            multiple
+            required
+          />
+        </div>
+      </div>
     </div>
 
     <div class="form-group">
@@ -155,6 +170,7 @@ formElement.addEventListener('submit', async (e) => {
     const tourContent = tourItemForm.querySelector('.tour-content').value;
     const tourPrice = tourItemForm.querySelector('.tour-price').value;
     const tourImgFile = tourItemForm.querySelector('.tour-img').files[0];
+    const tourImgExtraFiles = tourItemForm.querySelector('.tour-img-extra').files;
     const tourId = title + "-" + tourTitle + "-" + index;
 
     if (tourImgFile && !tourImgFile.type.startsWith('image/')) {
@@ -162,11 +178,29 @@ formElement.addEventListener('submit', async (e) => {
       resetLoading()
       return;
     }
+
+    for (const tourImgExtraFile of tourImgExtraFiles) {
+      if (tourImgExtraFile.name != '' && !tourImgExtraFile.type.startsWith('image/')) {
+        alert('All tour files must be images.');
+        resetLoading()
+        return;
+      }
+    }
+
     let tourImgUrl = data.tours[index].tourImgUrl;
     if (tourImgFile) {
       tourImgUrl = await uploadImage(tourImgFile);
     }
-    tours.push({ id: tourId, tourTitle, tourContent, tourImgUrl, tourPrice });
+
+    const tourImgExtraUrls = []
+    for (const tourImgExtraFile of tourImgExtraFiles) {
+      if (tourImgExtraFile.name != '') {
+        const tourImgExtraUrl = await uploadImage(tourImgExtraFile);
+        tourImgExtraUrls.push(tourImgExtraUrl);
+      }
+    }
+
+    tours.push({ id: tourId, tourTitle, tourContent, tourImgUrl, tourPrice, tourImgExtraUrls });
 
     index++;
   }

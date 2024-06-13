@@ -303,7 +303,7 @@
             next +
             '" name="field' +
             next +
-            '"><!-- Tour Title and Image--><div class="row"><div class="col-6"><div class="form-group"><label class="text-black" for="action_name">Title</label><input id="action_name" name="tour-title" type="text" placeholder="" class="form-control tour-title" /></div></div><div class="col-6"><div class="form-group"><label class="text-black" for="action_name">Tour Price</label><input id="action_name" name="tour-price" type="number" placeholder="" class="form-control tour-price" /></div></div><div class="col-6"><div class="form-group"><label class="text-black" for="action_json">Tour Image</label><input type="file" id="action_json" name="tour-img" class="input-file form-control tour-img"/><div id="action_jsondisplay"></div></div></div></div><!--Tour content--><div class="form-group"><label class="text-black" for="content">Content</label><textarea name="tour-content" class="form-control tour-content" id="content" cols="30" rows="5" required></textarea></div>';
+            '"><!-- Tour Title and Image--><div class="row"><div class="col-6"><div class="form-group"><label class="text-black" for="action_name">Title</label><input id="action_name" name="tour-title" type="text" placeholder="" class="form-control tour-title" /></div></div><div class="col-6"><div class="form-group"><label class="text-black" for="action_name">Tour Price</label><input id="action_name" name="tour-price" type="number" placeholder="" class="form-control tour-price" /></div></div><div class="col-6"><div class="form-group"><label class="text-black" for="action_json">Tour Image</label><input type="file" id="action_json" name="tour-img" class="input-file form-control tour-img"/><div id="action_jsondisplay"></div></div></div><div class="col-6"><div class="form-group"><label class="text-black" for="extra_tour_images">Upload Extra Images</label><input type="file" class="form-control tour-img-extra" name="extra_tour_images" id="extra_tour_images" multiple required /></div></div></div><!--Tour content--><div class="form-group"><label class="text-black" for="content">Content</label><textarea name="tour-content" class="form-control tour-content" id="content" cols="30" rows="5" required></textarea></div>';
           var newInput = $(newIn);
           var removeBtn =
             '<button type="button" id="remove' +
@@ -319,7 +319,6 @@
             e.preventDefault();
             var fieldNum = this.id.charAt(this.id.length - 1);
             var fieldID = "#field" + fieldNum;
-            console.log(fieldNum, this);
             $(this).remove();
             $(fieldID).remove();
           });
